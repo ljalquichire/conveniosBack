@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba de convenio</title>
+    <style>
+        /* Style the body */
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+        /* Header/Logo Title */
+        .header {
+            padding: 15px;
+            text-align: center;
+            background: #25CE3F;
+            color: white;
+            font-size: 15px;
+        }
+
+        /* Page Content */
+        .content {padding:10px;}
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        hr {
+            height: 1px;
+            border-color: black;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Convenio</h1>
+    <p># {{ .NumeroConvenio }}</p>
+</div>
+    <table class="default">
+        <tr>
+            <td><b>Nombre de la institución: </b></td>
+            <td>{{ .Convenio.NombreInstitucion }}</td>
+        </tr>
+        <tr>
+            <td><b>Nombre del convenio: </b></td>
+            <td>{{ .Convenio.NombreConvenio }}</td>
+        </tr>
+        <tr>
+            <td><b>Objeto del convenio: </b></td>
+            <td>{{ .Convenio.ObjetoConvenio }}</td>
+        </tr>
+        <tr>
+            <td><b>Tipologia del convenio: </b></td>
+            <td>{{ .Convenio.TipologiaConvenio }}</td>
+        </tr>
+        <tr>
+            <td><b>Modalidad del convenio: </b></td>
+            <td>{{ .Convenio.ModalidadConvenio }}</td>
+        </tr>
+        <tr>
+            <td><b>Beneficiarios: </b></td>
+            <td>{{ .Convenio.Beneficiarios }}</td>
+        </tr>
+        <tr>
+            <td><b>Caracterización: </b></td>
+            <td>{{ .Convenio.Caracterizacion }}</td>
+        </tr>
+    </table>
+<div class="header">
+    <h1>Información del Gestor</h1>
+</div>
+<table class="default">
+    <tr>
+        <td><b>Nombre del Responsable: </b></td>
+        <td>{{ .Convenio.InfoGestor.NombreResponsable }}</td>
+    </tr>
+    <tr>
+        <td><b>Fecha: </b></td>
+        <td>{{ .Convenio.InfoGestor.Fecha }}</td>
+    </tr>
+    <tr>
+        <td><b>Unidad Academica: </b></td>
+        <td>{{ .Convenio.InfoGestor.UnidadAcademica }}</td>
+    </tr>
+    <tr>
+        <td><b>Cargo: </b></td>
+        <td>{{ .Convenio.InfoGestor.Cargo }}</td>
+    </tr>
+    <tr>
+        <td><b>Email: </b></td>
+        <td>{{ .Convenio.InfoGestor.Email }}</td>
+    </tr>
+    <tr>
+        <td><b>Telefono: </b></td>
+        <td>{{ .Convenio.InfoGestor.Telefono }}</td>
+    </tr>
+</table>
+<center>
+    <br>
+    <br>
+    {{range .FirmaInfo}}
+    <img src="data:image/png;base64,{{.Firma}}"  width="300" height="150">
+    <hr>
+    <p>{{.Rol.Nombre}}</p>
+    <p>{{.Nombres}} {{.Apellidos}} {{.TipoId}}: {{.Id}}</p>
+    {{end}}
+</center>
+</body>
+</html>
